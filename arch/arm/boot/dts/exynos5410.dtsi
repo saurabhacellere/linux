@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: GPL-2.0
+// SPDX-License-Identifier: GPL-2.0-only
 /*
  * SAMSUNG EXYNOS5410 SoC device tree source
  *
@@ -258,6 +258,12 @@
 		       #include "exynos5420-trip-points.dtsi"
 		};
 	};
+};
+
+&adc {
+	clocks = <&clock CLK_TSADC>;
+	clock-names = "adc";
+	samsung,syscon-phandle = <&pmu_system_controller>;
 };
 
 &arm_a15_pmu {

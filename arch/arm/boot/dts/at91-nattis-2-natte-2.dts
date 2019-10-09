@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: GPL-2.0+
+// SPDX-License-Identifier: GPL-2.0-or-later
 /*
  * at91-nattis-2-natte-2.dts - Device Tree file for the Linea/Nattis board
  *
@@ -22,7 +22,7 @@
 		wakeup {
 			label = "Wakeup";
 			linux,code = <10>;
-			gpio-key,wakeup;
+			wakeup-source;
 			gpios = <&pioB 27 GPIO_ACTIVE_LOW>;
 		};
 	};

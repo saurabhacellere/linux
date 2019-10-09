@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+// SPDX-License-Identifier: (GPL-2.0-or-later OR MIT)
 /*
  * Device Tree Include file for Marvell 98dx3236 family SoC
  *
@@ -334,5 +334,13 @@
 
 &sdio {
 	status = "disabled";
+};
+
+&uart0 {
+	compatible = "marvell,armada-38x-uart";
+};
+
+&uart1 {
+	compatible = "marvell,armada-38x-uart";
 };
 

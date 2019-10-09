@@ -1,4 +1,4 @@
-/* SPDX-License-Identifier: GPL-2.0 */
+/* SPDX-License-Identifier: GPL-2.0-only */
 #ifndef __ALPHA_UACCESS_H
 #define __ALPHA_UACCESS_H
 
@@ -18,7 +18,6 @@
 #define USER_DS		((mm_segment_t) { -0x40000000000UL })
 
 #define get_fs()  (current_thread_info()->addr_limit)
-#define get_ds()  (KERNEL_DS)
 #define set_fs(x) (current_thread_info()->addr_limit = (x))
 
 #define segment_eq(a, b)	((a).seg == (b).seg)

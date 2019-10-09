@@ -1,4 +1,4 @@
-.. SPDX-License-Identifier: GPL-2.0
+.. SPDX-License-Identifier: GPL-2.0-only
 
 .. _kernel_licensing:
 
@@ -62,7 +62,7 @@ License identifier syntax
 
    The SPDX license identifier in kernel files shall be added at the first
    possible line in a file which can contain a comment.  For the majority
-   or files this is the first line, except for scripts which require the
+   of files this is the first line, except for scripts which require the
    '#!PATH_TO_INTERPRETER' in the first line.  For those scripts the SPDX
    identifier goes into the second line.
 
@@ -102,19 +102,19 @@ License identifier syntax
    License identifiers for licenses like [L]GPL with the 'or later' option
    are constructed by using a "+" for indicating the 'or later' option.::
 
-      // SPDX-License-Identifier: GPL-2.0+
-      // SPDX-License-Identifier: LGPL-2.1+
+      // SPDX-License-Identifier: GPL-2.0-or-later
+      // SPDX-License-Identifier: LGPL-2.1-or-later
 
    WITH should be used when there is a modifier to a license needed.
    For example, the linux kernel UAPI files use the expression::
 
-      // SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
-      // SPDX-License-Identifier: GPL-2.0+ WITH Linux-syscall-note
+      // SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note
+      // SPDX-License-Identifier: GPL-2.0-or-later WITH Linux-syscall-note
 
    Other examples using WITH exceptions found in the kernel are::
 
-      // SPDX-License-Identifier: GPL-2.0 WITH mif-exception
-      // SPDX-License-Identifier: GPL-2.0+ WITH GCC-exception-2.0
+      // SPDX-License-Identifier: GPL-2.0-only WITH mif-exception
+      // SPDX-License-Identifier: GPL-2.0-or-later WITH GCC-exception-2.0
 
    Exceptions can only be used with particular License identifiers. The
    valid License identifiers are listed in the tags of the exception text
@@ -125,28 +125,28 @@ License identifier syntax
    to be selected.  For example, some dtsi files are available under dual
    licenses::
 
-      // SPDX-License-Identifier: GPL-2.0 OR BSD-3-Clause
+      // SPDX-License-Identifier: GPL-2.0-only OR BSD-3-Clause
 
    Examples from the kernel for license expressions in dual licensed files::
 
-      // SPDX-License-Identifier: GPL-2.0 OR MIT
-      // SPDX-License-Identifier: GPL-2.0 OR BSD-2-Clause
-      // SPDX-License-Identifier: GPL-2.0 OR Apache-2.0
-      // SPDX-License-Identifier: GPL-2.0 OR MPL-1.1
-      // SPDX-License-Identifier: (GPL-2.0 WITH Linux-syscall-note) OR MIT
-      // SPDX-License-Identifier: GPL-1.0+ OR BSD-3-Clause OR OpenSSL
+      // SPDX-License-Identifier: GPL-2.0-only OR MIT
+      // SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+      // SPDX-License-Identifier: GPL-2.0-only OR Apache-2.0
+      // SPDX-License-Identifier: GPL-2.0-only OR MPL-1.1
+      // SPDX-License-Identifier: (GPL-2.0-only WITH Linux-syscall-note) OR MIT
+      // SPDX-License-Identifier: GPL-1.0-or-later OR BSD-3-Clause OR OpenSSL
 
    AND should be used if the file has multiple licenses whose terms all
    apply to use the file. For example, if code is inherited from another
    project and permission has been given to put it in the kernel, but the
    original license terms need to remain in effect::
 
-      // SPDX-License-Identifier: (GPL-2.0 WITH Linux-syscall-note) AND MIT
+      // SPDX-License-Identifier: (GPL-2.0-only WITH Linux-syscall-note) AND MIT
 
    Another other example where both sets of license terms need to be
    adhered to is::
 
-      // SPDX-License-Identifier: GPL-1.0+ AND LGPL-2.1+
+      // SPDX-License-Identifier: GPL-1.0+ AND LGPL-2.1-or-later
 
 License identifiers
 -------------------
@@ -214,9 +214,9 @@ kernel, can be broken down into:
 	tag/value pairs into a comment according to the placement
 	guidelines in the licensing rules documentation.
 	For 'GNU General Public License (GPL) version 2 only' use:
-	  SPDX-License-Identifier: GPL-2.0
+	  SPDX-License-Identifier: GPL-2.0-only
 	For 'GNU General Public License (GPL) version 2 or any later version' use:
-	  SPDX-License-Identifier: GPL-2.0+
+	  SPDX-License-Identifier: GPL-2.0-or-later
       License-Text:
         Full license text
 
@@ -234,13 +234,13 @@ kernel, can be broken down into:
 
 |
 
-2. Not recommended licenses:
+2. Deprecated licenses:
 
    These licenses should only be used for existing code or for importing
    code from a different project.  These licenses are available from the
    directory::
 
-      LICENSES/other/
+      LICENSES/deprecated/
 
    in the kernel source tree.
 
@@ -250,14 +250,14 @@ kernel, can be broken down into:
 
    Examples::
 
-      LICENSES/other/ISC
+      LICENSES/deprecated/ISC
 
    Contains the Internet Systems Consortium license text and the required
    metatags::
 
-      LICENSES/other/ZLib
+      LICENSES/deprecated/GPL-1.0
 
-   Contains the ZLIB license text and the required metatags.
+   Contains the GPL version 1 license text and the required metatags.
 
    Metatags:
 
@@ -281,7 +281,56 @@ kernel, can be broken down into:
 
 |
 
-3. _`Exceptions`:
+3. Dual Licensing Only
+
+   These licenses should only be used to dual license code with another
+   license in addition to a preferred license.  These licenses are available
+   from the directory::
+
+      LICENSES/dual/
+
+   in the kernel source tree.
+
+   The files in this directory contain the full license text and
+   `Metatags`_.  The file names are identical to the SPDX license
+   identifier which shall be used for the license in source files.
+
+   Examples::
+
+      LICENSES/dual/MPL-1.1
+
+   Contains the Mozilla Public License version 1.1 license text and the
+   required metatags::
+
+      LICENSES/dual/Apache-2.0
+
+   Contains the Apache License version 2.0 license text and the required
+   metatags.
+
+   Metatags:
+
+   The metatag requirements for 'other' licenses are identical to the
+   requirements of the `Preferred licenses`_.
+
+   File format example::
+
+      Valid-License-Identifier: MPL-1.1
+      SPDX-URL: https://spdx.org/licenses/MPL-1.1.html
+      Usage-Guide:
+        Do NOT use. The MPL-1.1 is not GPL2 compatible. It may only be used for
+        dual-licensed files where the other license is GPL2 compatible.
+        If you end up using this it MUST be used together with a GPL2 compatible
+        license using "OR".
+        To use the Mozilla Public License version 1.1 put the following SPDX
+        tag/value pair into a comment according to the placement guidelines in
+        the licensing rules documentation:
+      SPDX-License-Identifier: MPL-1.1
+      License-Text:
+        Full license text
+
+|
+
+4. _`Exceptions`:
 
    Some licenses can be amended with exceptions which grant certain rights
    which the original license does not.  These exceptions are available
@@ -298,7 +347,7 @@ kernel, can be broken down into:
 
    Contains the Linux syscall exception as documented in the COPYING
    file of the Linux kernel, which is used for UAPI header files.
-   e.g. /\* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note \*/::
+   e.g. /\* SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note \*/::
 
       LICENSES/exceptions/GCC-exception-2.0
 
@@ -368,7 +417,69 @@ kernel, can be broken down into:
 
 
 All SPDX license identifiers and exceptions must have a corresponding file
-in the LICENSE subdirectories. This is required to allow tool
+in the LICENSES subdirectories. This is required to allow tool
 verification (e.g. checkpatch.pl) and to have the licenses ready to read
 and extract right from the source, which is recommended by various FOSS
 organizations, e.g. the `FSFE REUSE initiative <https://reuse.software/>`_.
+
+_`MODULE_LICENSE`
+-----------------
+
+   Loadable kernel modules also require a MODULE_LICENSE() tag. This tag is
+   neither a replacement for proper source code license information
+   (SPDX-License-Identifier) nor in any way relevant for expressing or
+   determining the exact license under which the source code of the module
+   is provided.
+
+   The sole purpose of this tag is to provide sufficient information
+   whether the module is free software or proprietary for the kernel
+   module loader and for user space tools.
+
+   The valid license strings for MODULE_LICENSE() are:
+
+    ============================= =============================================
+    "GPL"			  Module is licensed under GPL version 2. This
+				  does not express any distinction between
+				  GPL-2.0-only or GPL-2.0-or-later. The exact
+				  license information can only be determined
+				  via the license information in the
+				  corresponding source files.
+
+    "GPL v2"			  Same as "GPL". It exists for historic
+				  reasons.
+
+    "GPL and additional rights"   Historical variant of expressing that the
+				  module source is dual licensed under a
+				  GPL v2 variant and MIT license. Please do
+				  not use in new code.
+
+    "Dual MIT/GPL"		  The correct way of expressing that the
+				  module is dual licensed under a GPL v2
+				  variant or MIT license choice.
+
+    "Dual BSD/GPL"		  The module is dual licensed under a GPL v2
+				  variant or BSD license choice. The exact
+				  variant of the BSD license can only be
+				  determined via the license information
+				  in the corresponding source files.
+
+    "Dual MPL/GPL"		  The module is dual licensed under a GPL v2
+				  variant or Mozilla Public License (MPL)
+				  choice. The exact variant of the MPL
+				  license can only be determined via the
+				  license information in the corresponding
+				  source files.
+
+    "Proprietary"		  The module is under a proprietary license.
+				  This string is solely for proprietary third
+				  party modules and cannot be used for modules
+				  which have their source code in the kernel
+				  tree. Modules tagged that way are tainting
+				  the kernel with the 'P' flag when loaded and
+				  the kernel module loader refuses to link such
+				  modules against symbols which are exported
+				  with EXPORT_SYMBOL_GPL().
+    ============================= =============================================
+
+
+
