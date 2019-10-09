@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+// SPDX-License-Identifier: (GPL-2.0-or-later OR MIT)
 /*
  * Device Tree file for NETGEAR ReadyNAS 104
  *
@@ -141,6 +141,20 @@
 			gpios = <&pca9554 3 GPIO_ACTIVE_LOW>;
 			default-state = "off";
 		};
+	};
+
+	auxdisplay {
+		compatible = "hit,hd44780";
+		data-gpios = <&gpio1 25 GPIO_ACTIVE_HIGH>,
+				<&gpio1 26 GPIO_ACTIVE_HIGH>,
+				<&gpio1 27 GPIO_ACTIVE_HIGH>,
+				<&gpio1 29 GPIO_ACTIVE_HIGH>;
+		enable-gpios = <&gpio1 24 GPIO_ACTIVE_HIGH>;
+		rs-gpios = <&gpio1 22 GPIO_ACTIVE_HIGH>;
+		rw-gpios = <&gpio1 23 GPIO_ACTIVE_HIGH>;
+		backlight-gpios = <&gpio1 21 GPIO_ACTIVE_LOW>;
+		display-height-chars = <2>;
+		display-width-chars = <16>;
 	};
 
 	gpio-keys {

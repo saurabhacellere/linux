@@ -1,4 +1,4 @@
-/* SPDX-License-Identifier: GPL-2.0 */
+/* SPDX-License-Identifier: GPL-2.0-only */
 #ifndef __ALPHA_IO_H
 #define __ALPHA_IO_H
 
@@ -92,11 +92,6 @@ static inline void * phys_to_virt(unsigned long address)
 #endif
 
 #define page_to_phys(page)	page_to_pa(page)
-
-static inline dma_addr_t __deprecated isa_page_to_bus(struct page *page)
-{
-	return page_to_phys(page);
-}
 
 /* Maximum PIO space address supported?  */
 #define IO_SPACE_LIMIT 0xffff
@@ -512,8 +507,6 @@ extern inline void writeq(u64 b, volatile void __iomem *addr)
 #define writew_relaxed(b, addr)	__raw_writew(b, addr)
 #define writel_relaxed(b, addr)	__raw_writel(b, addr)
 #define writeq_relaxed(b, addr)	__raw_writeq(b, addr)
-
-#define mmiowb()
 
 /*
  * String version of IO memory access ops:

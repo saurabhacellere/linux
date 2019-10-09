@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: GPL-2.0
+// SPDX-License-Identifier: GPL-2.0-only
 /*
  * Samsung's Exynos3250 based Rinato board device tree source
  *
@@ -242,6 +242,11 @@
 		wr-act = <1>;
 		wr-hold = <0>;
 	};
+};
+
+&gpu {
+	mali-supply = <&buck3_reg>;
+	status = "okay";
 };
 
 &i2c_0 {

@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: GPL-2.0
+// SPDX-License-Identifier: GPL-2.0-only
 /*
  * at91-wb45n.dts - Device Tree file for WB45NBT board
  *
@@ -22,7 +22,7 @@
 			label = "IRQBTN";
 			linux,code = <99>;
 			gpios = <&pioB 18 GPIO_ACTIVE_LOW>;
-			gpio-key,wakeup = <1>;
+			wakeup-source;
 		};
 	};
 };

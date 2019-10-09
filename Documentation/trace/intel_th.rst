@@ -1,3 +1,5 @@
+.. SPDX-License-Identifier: GPL-2.0-only
+
 =======================
 Intel(R) Trace Hub (TH)
 =======================

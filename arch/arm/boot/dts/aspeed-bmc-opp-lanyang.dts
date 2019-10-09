@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: GPL-2.0+
+// SPDX-License-Identifier: GPL-2.0-or-later
 // Copyright (c) 2018 Inventec Corporation
 /dts-v1/;
 
@@ -322,3 +322,5 @@
 &adc {
 	status = "okay";
 };
+
+#include "ibm-power9-dual.dtsi"

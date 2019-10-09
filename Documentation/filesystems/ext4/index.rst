@@ -1,4 +1,4 @@
-.. SPDX-License-Identifier: GPL-2.0
+.. SPDX-License-Identifier: GPL-2.0-only
 
 ===================================
 ext4 Data Structures and Algorithms
@@ -8,7 +8,7 @@ ext4 Data Structures and Algorithms
    :maxdepth: 6
    :numbered:
 
-   about.rst
-   overview.rst
-   globals.rst
-   dynamic.rst
+   about
+   overview
+   globals
+   dynamic

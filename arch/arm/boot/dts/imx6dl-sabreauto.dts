@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: GPL-2.0
+// SPDX-License-Identifier: GPL-2.0-only
 //
 // Copyright (C) 2013 Freescale Semiconductor, Inc.
 
@@ -10,4 +10,19 @@
 / {
 	model = "Freescale i.MX6 DualLite/Solo SABRE Automotive Board";
 	compatible = "fsl,imx6dl-sabreauto", "fsl,imx6dl";
+};
+
+&cpu0 {
+	operating-points = <
+		/* kHz    uV */
+		996000  1275000
+		792000  1175000
+		396000  1150000
+	>;
+	fsl,soc-operating-points = <
+		/* ARM kHz  SOC-PU uV */
+		996000	1200000
+		792000	1175000
+		396000	1175000
+	>;
 };

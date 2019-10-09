@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: GPL-2.0
+// SPDX-License-Identifier: GPL-2.0-only
 /*
  * Broadcom BCM63138 Reference Board DTS
  */
@@ -16,7 +16,8 @@
 		stdout-path = &serial0;
 	};
 
-	memory {
+	memory@0 {
+		device_type = "memory";
 		reg = <0x0 0x08000000>;
 	};
 

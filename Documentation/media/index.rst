@@ -1,4 +1,4 @@
-.. SPDX-License-Identifier: GPL-2.0
+.. SPDX-License-Identifier: GPL-2.0-only
 
 Linux Media Subsystem Documentation
 ===================================
@@ -18,7 +18,7 @@ Linux Media Subsystem Documentation
    v4l-drivers/index
    cec-drivers/index
 
-.. only::  subproject
+.. only:: html and subproject
 
    Indices
    =======

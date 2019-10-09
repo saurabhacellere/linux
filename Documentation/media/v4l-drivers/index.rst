@@ -1,4 +1,4 @@
-.. SPDX-License-Identifier: GPL-2.0
+.. SPDX-License-Identifier: GPL-2.0-only
 
 .. include:: <isonum.txt>
 
@@ -44,6 +44,7 @@ For more details see the file COPYING in the source distribution of Linux.
 	davinci-vpbe
 	fimc
 	imx
+	imx7
 	ipu3
 	ivtv
 	max2175
@@ -63,6 +64,6 @@ For more details see the file COPYING in the source distribution of Linux.
 	si476x
 	soc-camera
 	uvcvideo
+	vimc
 	vivid
-	zoran
 	zr364xx
